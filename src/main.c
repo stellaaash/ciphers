@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <unistd.h>
 
 #define OFFSET 10
