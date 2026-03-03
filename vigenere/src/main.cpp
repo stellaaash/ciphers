@@ -11,18 +11,13 @@ char caesar_shift(char c, int offset) {
     int shifted = c + static_cast<char>(offset);
     if (shifted < 'a') {
         int difference = 'a' - shifted;
-        shifted = 'z' - difference;
-        std::clog << "[!] - Difference: " << difference << std::endl;
+        shifted = 'z' - difference - 1;
     } else if (shifted > 'z') {
         int difference = shifted - 'z';
-        shifted = 'a' + difference;
-        std::clog << "[!] - Difference: " << difference << std::endl;
+        shifted = 'a' + difference - 1;
     } else {
         // Do nothing if the shifted character is still alphabetical after the shift
     }
-
-    std::clog << "[!] - Shifted character '" << c << "' to character '"
-              << static_cast<char>(shifted) << "'" << std::endl;
 
     return static_cast<char>(shifted);
 }
@@ -44,7 +39,7 @@ std::string decode(std::string encoded, std::string keyword) {
         ++encoded_index;
     }
 
-    std::cout << "[!] - Key created: " << key << std::endl;
+    std::cout << key << std::endl;
 
     std::string decoded;
 
@@ -69,7 +64,8 @@ int main(int argc, char** argv) {
     std::string encoded = argv[1];
     std::string keyword = argv[2];
 
-    std::cout << decode(encoded, keyword);
+    std::cout << encoded << std::endl;
+    std::cout << decode(encoded, keyword) << std::endl;
 
     return 0;
 }
